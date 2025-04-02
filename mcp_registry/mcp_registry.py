@@ -81,6 +81,66 @@ class State(rx.State):
             description="Real-time data analytics and processing server",
             command="mcp start analytics --stream --batch-size 1000",
         ),
+        MCPServer(
+            name="Load Balancer",
+            description="Advanced load balancing with health checks and failover",
+            command="mcp start lb --algorithm round-robin --health-check",
+        ),
+        MCPServer(
+            name="Cache Server",
+            description="High-performance distributed caching system",
+            command="mcp start cache --size 4GB --eviction lru",
+        ),
+        MCPServer(
+            name="Queue Worker",
+            description="Background job processing with priority queues",
+            command="mcp start worker --queues high,default,low --concurrent 3",
+        ),
+        MCPServer(
+            name="WebSocket Server",
+            description="Real-time WebSocket server for live updates",
+            command="mcp start ws --heartbeat 30s --compression",
+        ),
+        MCPServer(
+            name="GraphQL Server",
+            description="GraphQL API server with schema visualization",
+            command="mcp start graphql --playground --subscriptions",
+        ),
+        MCPServer(
+            name="Static Server",
+            description="High-performance static file server with caching",
+            command="mcp start static --dir /public --cache-control max-age=3600",
+        ),
+        MCPServer(
+            name="Auth Server",
+            description="Authentication and authorization service with OAuth/OIDC",
+            command="mcp start auth --providers oauth,oidc --session-timeout 24h",
+        ),
+        MCPServer(
+            name="Proxy Server",
+            description="Reverse proxy with SSL termination and rate limiting",
+            command="mcp start proxy --ssl --rate-limit 100/min",
+        ),
+        MCPServer(
+            name="Search Server",
+            description="Full-text search engine with indexing and faceting",
+            command="mcp start search --index-dir /data --language en",
+        ),
+        MCPServer(
+            name="Media Server",
+            description="Media processing server with transcoding support",
+            command="mcp start media --formats mp4,webm --quality high",
+        ),
+        MCPServer(
+            name="Mail Server",
+            description="Email server with spam filtering and DKIM signing",
+            command="mcp start mail --spam-filter --dkim-key /keys/dkim.private",
+        ),
+        MCPServer(
+            name="Config Server",
+            description="Centralized configuration management with versioning",
+            command="mcp start config --store etcd --watch",
+        ),
     ]
 
     @rx.var
@@ -114,10 +174,11 @@ def server_card(server: MCPServer) -> rx.Component:
                 color="#94A3B8",
                 font_size="sm",
                 margin_bottom="4",
-                no_of_lines=2,
+                no_of_lines=1,
                 overflow="hidden",
                 text_overflow="ellipsis",
             ),
+            rx.spacer(),
             rx.box(
                 rx.hstack(
                     rx.text(
@@ -146,7 +207,7 @@ def server_card(server: MCPServer) -> rx.Component:
                 margin_bottom="4",
             ),
             height="100%",
-            spacing="0",
+            spacing="1",
             align_items="start",
             width="100%",
         ),
