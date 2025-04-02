@@ -181,6 +181,7 @@ def index() -> rx.Component:
                     background="linear-gradient(to right, #FF5733, #FFC300)",
                     background_clip="text",
                 ),
+                rx.spacer(),
                 rx.input(
                     placeholder="Search servers...",
                     value=State.search_query,
@@ -198,8 +199,8 @@ def index() -> rx.Component:
                         "outline": "none",
                     },
                 ),
-                justify="between",
                 width="100%",
+                align_items="center",
             ),
             rx.spacer(height="8"),
             rx.grid(
